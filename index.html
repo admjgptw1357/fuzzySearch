@@ -1,34 +1,21 @@
 <html>
-
-<head>
-    <script type="text/javascript" charset="uft-8" src="data.js"></script>
+  <head>
+    <script type="text/javascript" src="data.js"></script>
     <script src="./node_modules/fuse.js/dist/fuse.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-</head>
-
-<body>
-    <input type="text" class="form-control" id="input" placeholder="Old man's war, etc...">
-    <div id="results"></div>
-    <script type="text/javascript">
-        var options = {
-            keys: ['slub', 'name'],
+  </head>
+  <body>
+        <input type="text" class="form-control" id="searchTextbox" placeholder="Old man's war, etc...">
+      <div id="results"></div>
+      <script>
+    var options = {
+        keys: ['slub', 'name'],
+    }
+    var fuse = new Fuse(data, options)
+    var output = fuse.search("オ");
+          for(i=0;i<output.length;i++){
+            document.getElementById('results').innerHTML += output[i].slug +'<br />'
         }
-        var fuse = new Fuse(data, options)
-        $(function () {
-            var $input = $('#input');
-            $input.on('input', function (event) {
-                var value = $input.val();
-                console.log(value);
-                var output = fuse.search("オ");
-                console.log(output);
-
-                for (i = 0; i < output.length; i++) {
-                    document.getElementById('results').innerHTML += output[i].slug + '<br />'
-                }
-            })
-        });
-    </script>
-    <p>asd</p>
-</body>
-
+      </script>
+      <p>asd</p>
+  </body>
 </html>
